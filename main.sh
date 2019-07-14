@@ -22,7 +22,13 @@ done
 
 if [ "$FLG_A" = "TRUE" ] && [ "$FLG_B" = "TRUE" ]; then
   echo "Start Installing Ruby ${RUBY_VERSION} into ${HOST}..."
-  ssh $HOST "sudo su --login -c 'cd /opt/rbenv/plugins/ruby_build && git pull origin master && ./install.sh && rbenv install ${RUBY_VERSION} && rbenv global ${RUBY_VERSION} && rbenv exec gem install bundler && rbenv rehash' root"
+  ssh $HOST "sudo su --login -c 'cd /opt/rbenv/plugins/ruby_build &&\
+              git pull origin master &&\
+              ./install.sh &&\
+              rbenv install ${RUBY_VERSION} &&\
+              rbenv global ${RUBY_VERSION} &&\
+              rbenv exec gem install bundler &&\
+              rbenv rehash' root"
 else
   usage
 fi
